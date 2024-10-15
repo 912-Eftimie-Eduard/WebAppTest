@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebAppTest.Models.Articol>
+
+@{
+    ViewData["Title"] = "Articles by User";
+}
+
+<h1>Articles by User</h1>
+
+<p>
+    <a asp-action="Index" class="btn btn-primary">Back to Users</a>
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().IdAutorPrincipal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().IdRevista)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().TitluArticol)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().AnPublicare)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().NrPagini)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().NrCoautori)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.IdAutorPrincipal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.IdRevista)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.TitluArticol)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.AnPublicare)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.NrPagini)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => article.NrCoautori)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>No articles found for this user.</div> <!-- Message if no articles are found -->
+}

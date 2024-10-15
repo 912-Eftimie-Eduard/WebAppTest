@@ -1,0 +1,101 @@
+﻿@model Tuple<List<WebAppTest.Models.Articol>, List<WebAppTest.Models.Revista>, List<WebAppTest.Models.Persoana>>
+
+@{
+    ViewData["Title"] = "Index";
+    var articole = Model.Item1;
+    var reviste = Model.Item2;
+    var persoane = Model.Item3;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().IdAutorPrincipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().IdRevista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().TitluArticol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().AnPublicare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().NrPagini)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => articole.First().NrCoautori)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in articole) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAutorPrincipal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitluArticol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnPublicare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrPagini)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrCoautori)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdArticol">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdArticol">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdArticol">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+@Html.DropDownList("SelectedRevistaId",
+    new SelectList(reviste, "IdRevista", "TitluRevista"),
+    "Select a Revista",
+    new { @class = "form-control", @onchange = "redirectToDetails(this)" })
+</div>
+
+<script>
+    function redirectToDetails(dropdown) {
+        var selectedValue = dropdown.value;
+        if (selectedValue) {
+            window.location.href = 'Reviste/Details/' + selectedValue;
+        }
+    }
+</script>
+
+<div>
+    @Html.DropDownList("IdPersoana",
+            new SelectList(persoane, "IdPersoana", "Nume"), // Adjust "FullName" based on your user model
+            "Select a User",
+            new { @class = "form-control", @onchange = "redirectToUserArticles(this)" })
+    <a asp-action="List" asp-route-idUser="1"> User articles</a>
+</div>
+
+<script>
+    function redirectToUserArticles(dropdown) {
+        var selectedValue = dropdown.value; // Get the selected user ID
+        if (selectedValue) {
+            window.location.href = '/Articole/List?idUser=' + selectedValue; // Redirect to Articole with the user ID
+        }
+    }
+</script>
+

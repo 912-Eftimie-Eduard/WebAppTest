@@ -1,0 +1,54 @@
+﻿@model WebAppTest.Models.Articol
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Articol</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdAutorPrincipal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdAutorPrincipal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdRevista)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdRevista)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TitluArticol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TitluArticol)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnPublicare)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnPublicare)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NrPagini)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NrPagini)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NrCoautori)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NrCoautori)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdArticol">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

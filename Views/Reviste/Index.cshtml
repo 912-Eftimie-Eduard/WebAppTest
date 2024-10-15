@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebAppTest.Models.Revista>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reviste</h1>
+
+<p>
+    <a asp-action="Create">Create a new revista</a>
+</p>
+
+<!-- Dropdown for selecting a Revista -->
+<div>
+    @Html.DropDownList("SelectedRevistaId",
+            new SelectList(Model, "IdRevista", "TitluRevista"),
+            "Select a Revista",
+            new { @class = "form-control-reviste", @onchange = "redirectToDetails(this)" })   
+</div>
+
+<script>
+    function redirectToDetails(dropdown) {
+        var selectedValue = dropdown.value;
+        if (selectedValue) {
+            window.location.href = 'Reviste/Details/' + selectedValue;
+        }
+    }
+</script>
+@* <a asp-action="Details" asp-route="@item.IdArticol"> Details </a> *@
+
+<div>
+    @Html.DropDownList("IdPersoana",
+            new SelectList(Model, "IdPersoana", "Nume"), // Adjust "FullName" based on your user model
+            "Select a User",
+            new { @class = "form-control-persoane", @onchange = "redirectToUserArticles(this)" })
+</div>
+
+<script>
+    function redirectToUserArticles(dropdown) {
+        var selectedValue = dropdown.value; // Get the selected user ID
+        if (selectedValue) {
+            window.location.href = '/Articole/List/' + selectedValue; // Redirect to Articole with the user ID
+        }
+    }
+</script>

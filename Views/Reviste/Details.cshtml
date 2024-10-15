@@ -1,0 +1,53 @@
+﻿@model WebAppTest.Models.Revista
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Revista</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipRevista)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipRevista)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TitluRevista)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TitluRevista)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Issn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Issn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnAparitie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnAparitie)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tara)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tara)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Articole" asp-action="Index">Back to List</a>
+</div>
