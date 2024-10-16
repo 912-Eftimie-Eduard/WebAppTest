@@ -87,14 +87,14 @@
             new SelectList(persoane, "IdPersoana", "Nume"), // Adjust "FullName" based on your user model
             "Select a User",
             new { @class = "form-control", @onchange = "redirectToUserArticles(this)" })
-    <a asp-action="List" asp-route-idUser="1"> User articles</a>
+    <a asp-action="List" asp-route-idUser="IdPersoana"> User articles</a>
 </div>
 
 <script>
     function redirectToUserArticles(dropdown) {
         var selectedValue = dropdown.value; // Get the selected user ID
         if (selectedValue) {
-            window.location.href = '/Articole/List?idUser=' + selectedValue; // Redirect to Articole with the user ID
+            window.location.href = '/Articole/List?idUser=' + selectedValue + '&exportExcel=true'; // Redirect to Articole with the user ID
         }
     }
 </script>

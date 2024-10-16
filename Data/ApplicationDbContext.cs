@@ -11,7 +11,6 @@ namespace WebAppTest.Data
             : base(options)
         {
         }
-
         public DbSet<Persoana> Persoane { get; set; }
         public DbSet<Revista> Reviste { get; set; }
         public DbSet<Articol> Articole { get; set; }
